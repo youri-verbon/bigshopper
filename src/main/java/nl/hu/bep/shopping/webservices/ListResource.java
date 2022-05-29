@@ -12,27 +12,27 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Path("list")
 public class ListResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getShoppingLists() {
+    public Response getShoppingLists() {
         List<ShoppingList> shoppingLists = Shop.getShop().getAllShoppingLists();
         if (shoppingLists.isEmpty()) {
-            return Json.createObjectBuilder().add("error", "no lists present").build().toString();
+            Map<String, String> errors = new HashMap<>();
+            errors.put("error", "no lists present");
+
+            return Response.status(404).entity(errors).build();
         }
         //java stream example, see @getShoppingListByName for a step by step output example
-        JsonArrayBuilder jab = Json.createArrayBuilder();
-        shoppingLists.forEach(
-                sl -> jab.add(
-                        Json.createObjectBuilder()
-                                .add("id", sl.getName())
-                                .add("owner", sl.getOwner().getName())
-                ));
-        return jab.build().toString();
+
+        return Response.ok(shoppingLists).build();
 
     }
 

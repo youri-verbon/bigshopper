@@ -3,6 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Test</title>
+    <script>
+
+        function createShopper() {
+            let formData = new FormData( document.querySelector("#postShopperForm") );
+            let requestData = {
+                name: formData.get("shopperName")
+            }
+
+            let fetchOptions = {
+                method: "POST",
+                body: JSON.stringify(requestData),
+                headers: { "Content-type": "application/json" }
+            }
+
+            fetch("/restservices/shopper", fetchOptions)
+            .then(response => response.json())
+            .then(function(myJson) {
+                document.querySelector("#postCustomerResponse").textContent = myJson.name;
+            });
+        }
+
+        window.addEventListener("load", function() {
+            document.querySelector("#postShopperButton").addEventListener("click", createShopper);
+        });
+
+    </script>
 </head>
 <body>
 <h1>What API call to test? </h1>
@@ -38,6 +64,12 @@
             non-existent shopper</a>
     </li>
 </ul>
-<!-- your POST form here -->
+<h2>Create shopper</h2>
+<form id="postShopperForm">
+    <label>Shoppername: <input type="text" id="shopperName" name="shopperName"/></label>
+    <input type="button" value="post-it" id="postShopperButton" />
+</form>
+<p id="postCustomerResponse"></p>
+
 </body>
 </html>
