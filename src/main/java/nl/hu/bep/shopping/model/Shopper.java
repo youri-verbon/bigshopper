@@ -11,9 +11,9 @@ public class Shopper implements NamedObject {
     private String name;
     private String role;
     private String password;
+    private List<ShoppingList> allLists = new ArrayList<>();
 
     private static List<Shopper> allShoppers = new ArrayList<>();
-    private List<ShoppingList> allLists = new ArrayList<>();
 
     public Shopper(String nm, String role, String password) {
         this.name = nm;

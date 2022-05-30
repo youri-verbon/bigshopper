@@ -63,8 +63,6 @@
             <version>2.35</version>
         </dependency>
 
-
-        <!-- @TODO be sure to add the Jersey Jackson-module, this would be a good spot :) -->
         <dependency>
           <groupId>io.jsonwebtoken</groupId>
           <artifactId>jjwt</artifactId>

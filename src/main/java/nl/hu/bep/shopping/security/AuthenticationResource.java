@@ -27,7 +27,6 @@ public class AuthenticationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response loginWebservice(AuthenticationRequest loginData) {
-
         for (Shopper shopper : Shopper.getAllShoppers()) {
 
             if (shopper.getName().equals(loginData.username) &&
