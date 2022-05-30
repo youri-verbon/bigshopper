@@ -14,7 +14,10 @@
             let fetchOptions = {
                 method: "POST",
                 body: JSON.stringify(requestData),
-                headers: { "Content-type": "application/json" }
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer " + sessionStorage.getItem("JWT")
+                }
             }
 
             fetch("/restservices/shopper", fetchOptions)
@@ -24,8 +27,39 @@
             });
         }
 
+        function login() {
+            let formData = new FormData( document.querySelector("#loginForm") );
+            let requestData = {
+                username: formData.get("username"),
+                password: formData.get("password")
+            }
+
+            let fetchOptions = {
+                method: "POST",
+                body: JSON.stringify(requestData),
+                headers: { "Content-type": "application/json" }
+            }
+
+            fetch("/restservices/login", fetchOptions)
+                .then(function(response) {
+                    if (response.status !== 200) {
+                        throw "Wrong credentials";
+                    } else {
+                        return response.json();
+                    }
+                })
+                .then(function(myJson) {
+                    sessionStorage.setItem("JWT", myJson['JWT-token']);
+                    document.querySelector("#loginResponse").textContent = "Login success";
+                })
+                .catch(function(error) {
+                    document.querySelector("#loginResponse").textContent = error;
+                });
+        }
+
         window.addEventListener("load", function() {
             document.querySelector("#postShopperButton").addEventListener("click", createShopper);
+            document.querySelector("#loginButton").addEventListener("click", login);
         });
 
     </script>
@@ -71,5 +105,12 @@
 </form>
 <p id="postCustomerResponse"></p>
 
+<h2>Login Form</h2>
+<form id="loginForm">
+    <label>Username: <input type="text" id="username" name="username"/></label>
+    <label>Password: <input type="password" id="password" name="password"/></label>
+    <input type="button" value="Login" id="loginButton" />
+</form>
+<p id="loginResponse"></p>
 </body>
 </html>

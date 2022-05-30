@@ -17,7 +17,7 @@ public class ShoppingListTest {
 
     @BeforeEach
     public void setup() {
-        p = new Shopper("Dum-Dum");
+        p = new Shopper("Dum-Dum", "admin", "geheim");
         il = new ShoppingList("initialList", p);
         al = new ShoppingList("anotherList", p);
         p.addList(il);

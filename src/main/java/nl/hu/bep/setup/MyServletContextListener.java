@@ -15,7 +15,7 @@ public class MyServletContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("initializing application");
-        Shopper p = new Shopper("Dum-Dum");
+        Shopper p = new Shopper("Dum-Dum", "admin", "geheim");
         ShoppingList il = new ShoppingList("initialList", p);
         ShoppingList al = new ShoppingList("anotherList", p);
         p.addList(il);

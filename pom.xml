@@ -65,11 +65,11 @@
 
 
         <!-- @TODO be sure to add the Jersey Jackson-module, this would be a good spot :) -->
-        <!--    <dependency> for authentication later on -->
-        <!--      <groupId>io.jsonwebtoken</groupId>-->
-        <!--      <artifactId>jjwt</artifactId>-->
-        <!--      <version>0.9.1</version>-->
-        <!--    </dependency>-->
+        <dependency>
+          <groupId>io.jsonwebtoken</groupId>
+          <artifactId>jjwt</artifactId>
+          <version>0.9.1</version>
+        </dependency>
 
         <!--    <dependency> to connect your blob service -->
         <!--      <groupId>com.azure</groupId>-->

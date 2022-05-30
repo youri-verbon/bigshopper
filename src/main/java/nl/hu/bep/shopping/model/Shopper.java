@@ -9,11 +9,17 @@ import java.util.Objects;
 
 public class Shopper implements NamedObject {
     private String name;
+    private String role;
+    private String password;
+
     private static List<Shopper> allShoppers = new ArrayList<>();
     private List<ShoppingList> allLists = new ArrayList<>();
 
-    public Shopper(String nm) {
+    public Shopper(String nm, String role, String password) {
         this.name = nm;
+        this.role = role;
+        this.password = password;
+
         if (!allShoppers.contains(this)) allShoppers.add(this);
     }
 
@@ -32,6 +38,14 @@ public class Shopper implements NamedObject {
 
     public String getName() {
         return name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public static List<Shopper> getAllShoppers() {

@@ -4,6 +4,7 @@ import nl.hu.bep.shopping.model.Shop;
 import nl.hu.bep.shopping.model.Shopper;
 import nl.hu.bep.shopping.model.ShoppingList;
 
+import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -56,11 +57,12 @@ public class PersonResource {
     }
 
     @POST
+    @RolesAllowed("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createNewShopper(ShopperRequest requestData) {
         int shoppers = Shopper.getAllShoppers().size();
-        Shopper newShopper = new Shopper(requestData.name);
+        Shopper newShopper = new Shopper(requestData.name, "user", "geheim");
 
         if (Shopper.getAllShoppers().size() > shoppers) {
             return Response.ok(newShopper).build();
