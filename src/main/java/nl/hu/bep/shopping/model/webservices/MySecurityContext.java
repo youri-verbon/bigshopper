@@ -1,11 +1,8 @@
-package nl.hu.bep.shopping.security;
-
+package nl.hu.bep.shopping.model.webservices;
 import nl.hu.bep.shopping.model.MyUser;
-import nl.hu.bep.shopping.model.Shopper;
 
 import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
-
 public class MySecurityContext implements SecurityContext {
     private MyUser user;
     private String scheme;

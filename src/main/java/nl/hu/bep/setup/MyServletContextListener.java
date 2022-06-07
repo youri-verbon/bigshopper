@@ -1,5 +1,6 @@
 package nl.hu.bep.setup;
 
+import nl.hu.bep.shopping.model.MyUser;
 import nl.hu.bep.shopping.model.Product;
 import nl.hu.bep.shopping.model.Shopper;
 import nl.hu.bep.shopping.model.ShoppingList;
@@ -24,6 +25,7 @@ public class MyServletContextListener implements ServletContextListener {
         il.addItem(new Product("Cola Zero"), 4);
         il.addItem(new Product("Toiletpapier 6stk"), 1);
         al.addItem(new Product("Paracetamol 30stk"), 3);
+        new MyUser("Henk", "wachtwoord", "admin");
     }
 
     @Override

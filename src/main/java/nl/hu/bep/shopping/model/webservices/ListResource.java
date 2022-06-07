@@ -1,9 +1,10 @@
-package nl.hu.bep.shopping.webservices;
+package nl.hu.bep.shopping.model.webservices;
 
 import nl.hu.bep.shopping.model.Item;
 import nl.hu.bep.shopping.model.Shop;
 import nl.hu.bep.shopping.model.ShoppingList;
 
+import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Path("list")
+@RolesAllowed("admin")
 public class ListResource {
 
     @GET

@@ -1,4 +1,4 @@
-package nl.hu.bep.shopping.webservices;
+package nl.hu.bep.shopping.model.webservices;
 
 public class ShopperRequest {
     public String name;

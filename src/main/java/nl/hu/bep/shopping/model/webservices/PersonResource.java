@@ -1,4 +1,4 @@
-package nl.hu.bep.shopping.webservices;
+package nl.hu.bep.shopping.model.webservices;
 
 import nl.hu.bep.shopping.model.Shop;
 import nl.hu.bep.shopping.model.Shopper;
